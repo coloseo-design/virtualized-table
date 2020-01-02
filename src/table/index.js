@@ -39,14 +39,15 @@ export default class TableTest extends React.Component {
     const { columns } = this.props;
     return columns.map(column => {
       const style= {};
-      const { width, onHeaderCell } = column;
+      const { width, onHeaderCell, key, dataIndex } = column;
+      const _key = key ? key : dataIndex;
       if (width) {
         Object.assign(style, {
           width,
           flex: 'none',
         });
       }
-      return (<div className="th" key={`${column.key}`} style={style}>{onHeaderCell ? onHeaderCell(column) : column.title}</div>);
+      return (<div className="th" key={`${_key}`} style={style}>{onHeaderCell ? onHeaderCell(column) : column.title}</div>);
     });
   }
   renderPlainRows = (dataSource) => {
@@ -61,14 +62,15 @@ export default class TableTest extends React.Component {
           {
             columns.map(column => {
               const style= {};
-              const { width } = column;
+              const { width, key, dataIndex } = column;
+              const _key = key ? key : dataIndex;
               if (width) {
                 Object.assign(style, {
                   width,
                   flex: 'none',
                 });
               }
-              return (<div key={column.key} className='td' style={style}>{this.onCell(record, column)}</div>);
+              return (<div key={`${_key}`} className='td' style={style}>{this.onCell(record, column)}</div>);
             })
           }
         </div>
@@ -91,7 +93,8 @@ export default class TableTest extends React.Component {
         >
           {
             columns.map(column => {
-              const { editable, width } = column;
+              const { editable, width, key, dataIndex } = column;
+              const _key = key ? key : dataIndex;
               const tdStyle= {};
               if (width) {
                 Object.assign(tdStyle, {
@@ -101,12 +104,12 @@ export default class TableTest extends React.Component {
               }
               if (editable) {
                 return (
-                  <div className="td" key={column.key} style={tdStyle}>
+                  <div className="td" key={`${_key}`} style={tdStyle}>
                     <Cell record={record} {...column}>{this.onCell(record, column)}</Cell>
                   </div>
                 )
               }
-              return <div className="td" key={column.key} style={tdStyle}>{this.onCell(record, column)}</div>
+              return <div className="td" key={`${_key}`} style={tdStyle}>{this.onCell(record, column)}</div>
             })
           }
         </Row>
