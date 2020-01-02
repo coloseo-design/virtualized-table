@@ -126,7 +126,7 @@ export default class TableTest extends React.Component {
     const contentSize = Math.ceil(height / rowHeight);
 
     const _startIndex = startIndex > bufferSize
-                        ? startIndex-bufferSize
+                        ? startIndex - bufferSize
                         : 0;
 
     const _endIndex   = startIndex > bufferSize
@@ -146,7 +146,7 @@ export default class TableTest extends React.Component {
         <div className="tb-head">
           {this.renderHeader()}
         </div>
-        <div className="tb-body ant-table-content" style={{ height, overflow: 'hidden auto', willChange: "transform" }} onScroll={this.onScroll}>
+        <div className="tb-body ant-table-content" style={{ height, overflowY: 'scroll', willChange: "transform" }} onScroll={this.onScroll}>
           <div className="tb-body-wrapper ant-table-body" style={{ height: maxHeight, position: 'relative' }}>
             {
               rows
