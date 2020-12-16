@@ -32,22 +32,6 @@ class EditableCell extends React.Component {
       )}
     </Form.Item>
     );
-    return dataIndex === 'gender' ? (
-      <Form.Item style={{ margin: 0 }}>
-        {form.getFieldDecorator(`${dataIndex}`, configure)(
-          <Select placeholder="请选择">
-            <Select.Option value="male">male</Select.Option>
-            <Select.Option value="famale">famale</Select.Option>
-          </Select>
-        )}
-      </Form.Item>
-    ) : (
-      <Form.Item style={{ margin: 0 }}>
-        {form.getFieldDecorator(`${dataIndex}${record.index}`, configure)(
-          <Input placeholder="请选择" />
-        )}
-      </Form.Item>
-    );
   };
 
   render() {

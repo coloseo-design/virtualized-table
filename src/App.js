@@ -5,7 +5,7 @@ import EditableCell from './editable-cell';
 import 'antd/dist/antd.css';
 
 const list = [];
-for (let i = 0; i < 5000; i++) {
+for (let i = 0; i < 10000; i++) {
   list.push({
     index: i,
     name: 'zhangsamn',
@@ -34,25 +34,21 @@ const columns = [
     title: '年龄',
     dataIndex: 'age',
     key: 'age',
-    editable: true,
   },
   {
     title: '性别',
     dataIndex: 'gender',
     key: 'gender',
-    // editable: true,
   },
   {
     title: '邮编',
     dataIndex: 'postcode',
     key: 'postcode',
-    // editable: true,
   },
   {
     title: '手机号码',
     dataIndex: 'phone',
     key: 'phone',
-    // editable: true,
   },
 ];
 function App() {
@@ -61,7 +57,7 @@ function App() {
       <Table
         height={500}
         rowHeight={50}
-        bufferSize={5}
+        bufferSize={10}
         dataSource={list}
         columns={columns}
         rowKey='index'
